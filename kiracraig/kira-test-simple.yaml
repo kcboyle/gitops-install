@@ -85,7 +85,7 @@ metadata:
   namespace: kcboyle
 spec:
   encryptedData:
-    .dockerconfigjson: AgCJ88X5vtN/bhO36fb3enHo+D8c9lBuTyjwzC+uBeoRBZXMw97e+Wqzl2vLIMfqpXAR7Igq3gaNyZ57w3iH2JSE1YWTyKxFEWxCj8paczCzM/d4YEOrSgkKdZDx5XCqqAI6V5YRMrN+RWYHExkozC5Hc7/GT1Bp39QA+SkP/zbJ4u5Oi4dAr6R5OHtx/eWU+SMr0m1umUBVVk73WE+Ir/SQDDBakhu85OAr4hFpLxIOijmRJNTZq0g/7xYvJfaHNs7TD5QRRuhd6zynlsm2rKWYsMAONaS1VojgoJ0zvh8iJJy+3Arb/WKqmJwMBbISxM1u1wmPPdZ5zSNrFCu42I2Yf7hUDobgnalVv+me3kkogOncLvJBUVSgDH9V6PVQHDJpVOHaaFOVoceLhpILshQWN286sa3ojqAWllsXXeb635AB99ukUCLn2iPcQ0QQBzj3dgdoQpembDst45Q87PYcr9eU1UwYQI2lqfU+NH+Ocklrz0E/gLzDCnWof9+84Ed2NddR6vX9WFkbnGaceoQXUh6du5xbrt2JVN6sbOHzT2XBBlMafTV46xbno2n52ZPoEBplJmRBHyK6BilS2u1+iaD1ufcQN4gbdAv3Ujgiz7BJrE3MCQd1YGOttSeqKSgrCLfCTOHcivpUYyj1edw6IZ7KQyqEvR3vQbuw+JZy+YXfjqD5OpA767+sbTwFMGDEKgaDZOkmqDte6+WhVZPtslPG/IT9vyknWnYDmsSJ/raWTXUSxhSgSs2wNxz5YIma6yExeO10Hlzew9gtV7fdRIgSVkKCdt8J+/Trob9eS/9jb982TmlDy1RrL23qrv8cUmxJKD2lv4qvmLsIaImbH5kpSMfHTZWaO7uIBwPZlD58P3rD+JovFVUQQGPmmZ7EVMEqqmstpznbxtkpnIdu5FRKQHGB9ItcxJwfSNWXq51BwmA0lLVImsxJUJjxLo1TvQAVyxmRDeH5Lls6dTBZVUvPOZog0Ey1TKHLl+f0R1NyLSRYFly/OvBkoA==
+    .dockerconfigjson: AgAEf4NeszO4ZIXcdUK553/+ZT/RM1n21/meZevacvpG2UfXaHvnV7BilQNnJEwz9/33kB6Ktr5L1k1xTwjedAjv7jfOdhK5fOEJ7RrQ3rBw0Sg8VMksJmstbdXIkvXa2tQJv5/nlBcbvzi58pzY8q0+S4yH4bdYPOW04KS6eJSaxLlAIiHSEMbAP2qnKen6kCNjCW+w7Hw0Yv0lC9A52OuFC3yYisjBeklUsyacvi1E+rpAXsrwkuvXEk606PPVuzQsQvSNW4Qo1KWUxNFeQfjjRzphpkGA1MGfphKhXvFRXB3kEsbWdixaKPNUdODkBCKQRFFaRX7eyyZ5NloNmoDv6CYV/0fCFW8W+f/gaXjAQbQKV01N0mcWLsrFJ+aTZUGVXC1mP7ucsV0IrIHmuaZ8uS9HEuGL+b0M0YUMV6BFujEM7RSUdCeWKZK4Q+HQ8fK2b5EbdnSBqLv1cAB46OGGwWDBfY29lZWzzwXTLhQo0b14Odh2n5aL/ofkAdcPZ45P/Hqv54RSoDUJQR49fWTajlERTFCgX/U5qN7/+KvtFxlpre5woDfRqPSXRJpkh+Mt9LlCP/UMcFC/uztdzG5BDM5wg2TsYU2A9NqglZEJ4kCpQzXCAXAJ6FMgrbXcN7OqVpOyQ7I4eQyUtzv3zqsi1jFCnXIt8Ljkba9gXDtNnjKxcwBLWB3sr9rVE5UkdNl/wUTFGPP9hwJeZ/Dyo6E72adTKcA5SLSsSGiFVprsAJcUAhlNDVAVV6OBYNKtrmQ4uCuAU18p2mRY5jW/9ILm7v5Qwvrh+IIf7pOUWtr84jsaG+OmxXdQ2b0AoDG6dc35+u22fOEEEDi+Mk1hCn5INsEQemo4iqZyJrdmNVbO2Me1lLd0nMPNi3D0I31JBTgD0ADXPYRRtmkev9FPTiW7z0pvNtUsFwmNVc6ZPCfjUz89LLwUn0fuDyo7nmtuVaTgefPmRdpcf6w5xNUIcx0nhdW5ITFrW+asOBla5zd5rfsFVebEOMx3BNP+XQ==
   template:
     metadata:
       annotations:
@@ -109,7 +109,7 @@ metadata:
   namespace: kcboyle
 spec:
   encryptedData:
-    .dockerconfigjson: AgC4hA2ktp8X5CN3WqUJNWupun+6+kYs3TPyLTnlKBU2wTW+t3Bk7vDQq8fmBcNrRn0OQaPOTp4d/UTjEYg86Mce8dGHCmBFA6d6DdlclIKKfuyE1ZuLRuy7dOQ0axmMvTJg5w8iZMmxloA4H4ZqtjtZewr1vUyg7ypvzWLOXBoBVl3pkTHUL6Tn1ARy/g12uJ+5zhf/pETNBu/GK0NcRIrQ+DD5FFKG52pLClwORDuvYeKyCIXIhLn7To80p5rf7HfgNs1Urx+DmZnAR3+d6Daagl3FaJDt2YllK95sdA0z0lOFGrmDAzKVAE4fycjIBl+SrkT+As+8rKsDsbF7ibONq9LdUu/Xx6M3TJreeykPZlOA2ZbYpr2vW54vQXUnjeDyBy4qlPnk66V+xB4PhtQXhLOulXbThq+0NTAVb22ChCCi8EtpSBZYHXITVrCNwygW3AG7gR6smWKtkU9XYkh48cbbZfdvFI7e2WqBapQha1GO6R8rD56kB+MoDRF6GMRMvr3vkncLKoJtCA81gnM+G1e2mVP3YmP/U4xuySWdf10EF+LUfAGwQPZArZ5qxg/Giu5BiPTBahcBPo0Q2nGD3dE3+HiiMXvXf9+9PkRRh5dfkKdr+WgxZa1xugiwzvVoxMFyTNYkqh3U+YNmm03Lk/VzdaMv4oD9rslmT/wNxxzyCsqZyrHqpYeENKNLhQ7Fjnv/toL447AInHmPjy+ZWAOFxXSfSmki7ZSEaEnh39s0USn4mNpHP0/bWLtSGPuF4b/YUWfInWBgTcjWk2x6VGMdq6tapQMyeSl0zyzC3u388z98BXKwXEPFauYL9poyBf5WMFOQswLq7h4tER7vhbMGJ0U1gEoNPJqp9BGYNtIgVUxI96D1Epgd5Xb98OpOAgtcsnUBt094SJpHwOM9ltP9GphLpxlByfXRPINdX1Ii4s/2DPHeSdmfEpF/nnybostN6OqHP+G1pT0SO/vLCR0OKHj1mGvwbj1Y33sIjB63M9nbwRX0q1O2Tg==
+    .dockerconfigjson: AgBJomFGxOUpUdy6QQXLBMs13b0098uKsdatGFWnoBRGv5nBfzMo0pf85VDbX2S8wzfKl8OLmnugI0lZrsa6LPS2fK7L2/gB7noDq1fBvQ0PVOLMh+jXe8JQxDd7jFPoNjy8lb4YxlOQR0RC5/nizz1+kcNkGAVSJGQi2OgF4WIKouhW+6ONqpX3RIsnKEWHYlO/05Vdaj02OhhZycQR6s2WIWEy8YS4st4fbF6fPP4OqujRqkl/vAUdBmhQOmSiFpLM+qX9RuuhK4Y6cRzkmW7J4AVhLxe+0phfOta2V6TCp0QKRVnLhW8NAhddcwwgrWaWMSU7aXVTk01+MqZxDCOWciEfHzlLHWdJjrN3JKubFIAUYiVZWgdnH/qtDKj2CGRTB9NXkyXG1iba/U4c8JjaGNk3tcBRAViJnERIlqLK2EybfdDpK4n46ldjHfA/OgNa8mody/MAKF2PAVLUH6r3toOqMCZSfH60fRlNfm8jy1ykR37mqE3ZcHrtKTtnM27+vnJPcMWhoGpLA5Bt/1Tfakq4s7f6G3eFMIuD433k2EwhzqtWlPOmkIkPa9Q+orrX2V0KfChr+neP3oEqMeja9IBPoTvkgy9Lir/ixtGbYjV53iB+6GErDO1FFTg8/LfzQjRJRx07DjT6MVRY6ZJPEbR2vlI876CDNaaWZl0ztE0UCkPEBDPOEh1NW/Zaun5z8pjCc+GC+EBk0PheYycInhbd/yQX8BktNzNYBlVZIRh4foKSSZ8lI7E7SC+pjAOKJWIThSIOPq/9Dpqn3Awicu9T+M+D4N8zCFq78fzrTofblzQdLWsmoNNHbt2uWqrGpk6oIPzM5OR3ihbefTQjrBhELhPLbRJRzm1g/JDb70NaZs+l7/OgqMC7Nk6imBI0yZf6/tipxPBvGO56O48JN3JtNxKXr94Mm0Gf3pK7vhyeQnEOnc0mBKT2zDgyzTd3Du0N9KdpYClx9sCKnX8SL2DTcFqdFViwVNpmtbaJbNdx8jKi5A7pzjQANg==
   template:
     metadata:
       annotations:
@@ -119,24 +119,3 @@ spec:
       name: kotsadm-replicated-registry
       namespace: kcboyle
     type: kubernetes.io/dockerconfigjson
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    kots.io/app-slug: kira-test-simple
-    kots.io/when: "true"
-  labels:
-    kots.io/app-slug: kira-test-simple
-    kots.io/backup: velero
-  name: ingress
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          service:
-            name: example-nginx
-            port:
-              number: 80
-        path: /
