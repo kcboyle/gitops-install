@@ -12,40 +12,6 @@ metadata:
   name: example-configmap
 ---
 apiVersion: v1
-data:
-  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9fX0=
-kind: Secret
-metadata:
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-9999"
-    kots.io/app-slug: kira-test-simple
-  creationTimestamp: null
-  labels:
-    kots.io/app-slug: kira-test-simple
-    kots.io/backup: velero
-  name: kira-test-simple-registry
-  namespace: kcboyle
-type: kubernetes.io/dockerconfigjson
----
-apiVersion: v1
-data:
-  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9fX0=
-kind: Secret
-metadata:
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-9999"
-    kots.io/app-slug: kira-test-simple
-  creationTimestamp: null
-  labels:
-    kots.io/app-slug: kira-test-simple
-    kots.io/backup: velero
-  name: kotsadm-replicated-registry
-  namespace: kcboyle
-type: kubernetes.io/dockerconfigjson
----
-apiVersion: v1
 kind: Service
 metadata:
   annotations:
@@ -105,3 +71,72 @@ spec:
             memory: 32Mi
       imagePullSecrets:
       - name: kira-test-simple-registry
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: kira-test-simple-registry
+  namespace: kcboyle
+spec:
+  encryptedData:
+    .dockerconfigjson: AgCwxcim5LtjM034Il/zX8QlUdF3Uno61/W3v4skjaz0pYjWsxYaEYWZ4lenxKleZffG7Bl//mRT8Pl7NRbOPMMQw3jfehuNfRNyzC4JKuXvNZPGzh5rofu5uGojc1A2IyKfxlq8JgEm1f+WDh3DRqOw6+I1twRx6DLIuZH/VVROQKqIRAVaAN//D1NJe2Fi92H44E4+0zcFymr4gmseFkCNFLrJMhy9A3gFIOkJxEAuaCBo9qByIm5zq3LOaxFlZRd5ynxyzCcb7awILjhvIb+yEqpeXlR+nlRNr0mHVVY3m87+r8ylYwd+yNsVxJkB31ooykbW+iAYBQYxrKG2oE3O8MPVmZ+Jpf0QI1L5EJO7P+TuLMysnnsZVZvkXXH0iElC4U2ZvYq8fOsEJQ7yrR9jKf5/X2Cn9lNQiTcg4GnI0/k2XKUH4RCXPUMoHUWTmm32p9O2rmMym2nDila10od2JwJSbgB0Ssm7E0jWsYxOSaG8dZXUGJRnf/+75uAS9TQOcLGJ1RDcgZ/VkiA89/n4tRh7EBp97a8+ThDCVypY3L1JnuIj8AkmcozTxiexJ4sJBfqtzoKtcv1+VLabx0lyY9JmFAF3sxwfSqqpPPgSroZbDDDnGuJgmlKeu27mljbiW40P9MuXsIIZ9e9Edimoeysr6RYjSvp1WXQwioD6aR5ZeR5dIKZJCZTkFPwTpJq5efZ2jU8DyfPxUb7fnfR5ickbnK9UgY7VIuGOldaK2KleSeB15vFq9w8zSfM9jUdaK5MOIRVD4/6A2EQ+QDNsJf1gKXLTafcX/SKkHMkHyYCgatYkkNBORJXgGCASNqpemrjRdMy3QfXNnZ37q7miMLe/UylVlPl/k/EJeATzkbv2gb+Qe9iWx0qGSf2wVeCa+JXMge39KCORQmdrU4dehAcRRr3Uqglp5jn7dyGFr+TgBfH9dgvdnTgDNEHHmxBzY1VHGXwwnqtnoB6QZnbqO3iD2tqpZpysF5WVcBR2MhQLQe3f9WFl7wQ/iw==
+  template:
+    metadata:
+      annotations:
+        helm.sh/hook: pre-install,pre-upgrade
+        helm.sh/hook-weight: "-9999"
+      creationTimestamp: null
+      name: kira-test-simple-registry
+      namespace: kcboyle
+    type: kubernetes.io/dockerconfigjson
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: kotsadm-replicated-registry
+  namespace: kcboyle
+spec:
+  encryptedData:
+    .dockerconfigjson: AgAvlsVi5iHIuIQOtY97xOZW6eqwg4to8gwRVaAC/bTPYV92jMD3uf/ZTYk1OKbZzeKZ0XBMunaglBa+G7zE9ppqDnR44ZN1BpJHo1ZaibcarvzMI0SJLB3D2gtJ6Im0BsEBk4fWk4byhWN9Vo34WnqNFcvcxEB5hQ2ibcryNCVyKMqZcjETZgwmcVmgIVuY13pKTQJQsdBpXeEaU/lwusjQ3laYrCAxg1qxoWqRvQwqvKKAHa4sA/tsWF7rzQxSFAm/LbMI3XWT6HTPUpCHGPpc0beYVlVC7xz232ZoKXzLLgyz2DxqLdbLoeOJF6/71HqM2jJZ455Ep6L7BoLbGaEhmXd5dAXMNR+0/e/NA+CYLPb6pR5l/osTJuOFnl3H4MIh/zyi191JWhDxd3XsQMkE9+/wM6n5kA5/fg5947XNhD7hI8IFBIXXaLeRVgSqKUk0KrFP70Wb9q1gxDc7s912WDguTU5Xsxab7N86VD8HRaPGVqFtKuE8dUsuw1bKBepQzGhNMBFf1sCcaImsnBsyxHle/C5zNfqD6kqT1jXthrVt0PFuP8xUdbSUpK4GhDqWf9LAVmhpuhomjsc90+8Sas1Gy7MFaMhHU6DHIFMI3YIwMgOfq1VW2AMOq+pMzQHX3OVDcnWO2IkHgrEKA99vOJhFbAa/fPswg9FytqMSDJzcLLf78//L/x+1KCFd2bt5YgWn0PwKWLL6pgGXs6z4r3N0zJY2Q0xugBGyKu5z4Wib/LV6KwWyvQAokztcMlD3QfsU3LR5URCs61ZYRma/yhB9MVuSnXsPnXu9eImfJ440RBzQPwFlSIrgezRONXmNRVCNXt+0CeNO39ShdphpWMaKhmUfdn5mjWQbQhj/e5H08UbEIhnCLCMmt+ZqpSJh79Rb9pM3Ihg0EkeUxcNylausofzZ4tlp43gDnTYY74D7uNr13zt1hVkit11cZ0DVCrkggqYPJGD0lumjHHGL0MnV8ejdIKnfE+m7F73rSerO98DKpkbjNRg2Mg==
+  template:
+    metadata:
+      annotations:
+        helm.sh/hook: pre-install,pre-upgrade
+        helm.sh/hook-weight: "-9999"
+      creationTimestamp: null
+      name: kotsadm-replicated-registry
+      namespace: kcboyle
+    type: kubernetes.io/dockerconfigjson
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+    kots.io/when: "true"
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: example-nginx
+            port:
+              number: 80
+        path: /
