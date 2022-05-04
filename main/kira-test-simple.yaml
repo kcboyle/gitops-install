@@ -1,0 +1,107 @@
+apiVersion: v1
+data:
+  ENV_VAR_1: fake
+  ENV_VAR_2: faker
+kind: ConfigMap
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: example-configmap
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9fX0=
+kind: Secret
+metadata:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-9999"
+    kots.io/app-slug: kira-test-simple
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: kira-test-simple-registry
+  namespace: default
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpnMFUwTlNSVXhaYTFRNVNHSnpaRVV3UnpOcFNrTnBTbTgyT2pJNE5GTkRVa1ZNV1d0VU9VaGljMlJGTUVjemFVcERhVXB2Tmc9PSJ9fX0=
+kind: Secret
+metadata:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-9999"
+    kots.io/app-slug: kira-test-simple
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: kotsadm-replicated-registry
+  namespace: default
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+  labels:
+    app: example
+    component: nginx
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: example-nginx
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: example
+    component: nginx
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-simple
+  labels:
+    app: example
+    component: nginx
+    kots.io/app-slug: kira-test-simple
+    kots.io/backup: velero
+  name: example-nginx
+spec:
+  selector:
+    matchLabels:
+      app: example
+      component: nginx
+  template:
+    metadata:
+      annotations:
+        kots.io/app-slug: kira-test-simple
+      labels:
+        app: example
+        component: nginx
+        kots.io/app-slug: kira-test-simple
+        kots.io/backup: velero
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: example-configmap
+        image: nginx
+        name: nginx
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 32Mi
+      imagePullSecrets:
+      - name: kira-test-simple-registry
