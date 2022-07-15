@@ -1,0 +1,148 @@
+apiVersion: v1
+data:
+  ENV_VAR_1: fake
+  ENV_VAR_2: faker
+kind: ConfigMap
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-lacewing
+  labels:
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: example-configmap
+---
+apiVersion: v1
+data:
+  SPECIAL_LEVEL: very
+  SPECIAL_TYPE: charm
+kind: ConfigMap
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-lacewing
+  labels:
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: special-config
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtGNlpUWTNSM0pMYXpWd2NXNDJURzlzYUVSMGVVVlpRVlZaT2pKQmVtVTJOMGR5UzJzMWNIRnVOa3h2YkdoRWRIbEZXVUZWV1E9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtGNlpUWTNSM0pMYXpWd2NXNDJURzlzYUVSMGVVVlpRVlZaT2pKQmVtVTJOMGR5UzJzMWNIRnVOa3h2YkdoRWRIbEZXVUZWV1E9PSJ9fX0=
+kind: Secret
+metadata:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-9999"
+    kots.io/app-slug: kira-test-lacewing
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: kira-test-lacewing-registry
+  namespace: kcboyle
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtGNlpUWTNSM0pMYXpWd2NXNDJURzlzYUVSMGVVVlpRVlZaT2pKQmVtVTJOMGR5UzJzMWNIRnVOa3h2YkdoRWRIbEZXVUZWV1E9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWtGNlpUWTNSM0pMYXpWd2NXNDJURzlzYUVSMGVVVlpRVlZaT2pKQmVtVTJOMGR5UzJzMWNIRnVOa3h2YkdoRWRIbEZXVUZWV1E9PSJ9fX0=
+kind: Secret
+metadata:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-9999"
+    kots.io/app-slug: kira-test-lacewing
+  creationTimestamp: null
+  labels:
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: kotsadm-replicated-registry
+  namespace: kcboyle
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-lacewing
+  labels:
+    app: example
+    component: nginx
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: example-nginx
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: example
+    component: nginx
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-lacewing
+  labels:
+    app: example
+    component: nginx
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: example-nginx
+spec:
+  selector:
+    matchLabels:
+      app: example
+      component: nginx
+  template:
+    metadata:
+      annotations:
+        kots.io/app-slug: kira-test-lacewing
+      labels:
+        app: example
+        component: nginx
+        kots.io/app-slug: kira-test-lacewing
+        kots.io/backup: velero
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: example-configmap
+        image: nginx
+        name: nginx
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 32Mi
+      imagePullSecrets:
+      - name: kira-test-lacewing-registry
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kots.io/app-slug: kira-test-lacewing
+  labels:
+    kots.io/app-slug: kira-test-lacewing
+    kots.io/backup: velero
+  name: dapi-test-pod
+spec:
+  containers:
+  - command:
+    - /bin/sh
+    - -c
+    - ls /etc/config/
+    image: k8s.gcr.io/busybox
+    name: test-container
+    volumeMounts:
+    - mountPath: /etc/config
+      name: config-volume
+  imagePullSecrets:
+  - name: kira-test-lacewing-registry
+  restartPolicy: Never
+  volumes:
+  - configMap:
+      name: special-config
+    name: config-volume
